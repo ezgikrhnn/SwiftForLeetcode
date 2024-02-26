@@ -3,5 +3,6 @@
     <pages>
         <page name='lengthOfLongestSubstring'/>
         <page name='isPalindrome'/>
+        <page name='addTwoNumbers'/>
     </pages>
 </playground>
