@@ -4,5 +4,6 @@
         <page name='lengthOfLongestSubstring'/>
         <page name='isPalindrome'/>
         <page name='addTwoNumbers'/>
+        <page name='twoSum'/>
     </pages>
 </playground>
