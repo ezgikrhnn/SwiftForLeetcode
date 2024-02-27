@@ -5,5 +5,7 @@
         <page name='isPalindrome'/>
         <page name='addTwoNumbers'/>
         <page name='twoSum'/>
+        <page name='mySqrt'/>
+        <page name='removeElement'/>
     </pages>
 </playground>
