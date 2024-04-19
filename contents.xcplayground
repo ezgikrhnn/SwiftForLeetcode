@@ -7,5 +7,7 @@
         <page name='twoSum'/>
         <page name='mySqrt'/>
         <page name='removeElement'/>
+        <page name='Codility_Q1'/>
+        <page name='Codility_Q2'/>
     </pages>
 </playground>

@@ -12,3 +12,5 @@ func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
 var numbers = [1, 2, 3, 4, 3, 3]
 let removedCount = removeElement(&numbers, 3)
 print("Kaldırılan eleman sayısı: \(removedCount)")
+
+
