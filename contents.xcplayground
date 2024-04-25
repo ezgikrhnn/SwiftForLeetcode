@@ -9,5 +9,7 @@
         <page name='removeElement'/>
         <page name='Codility_Q1'/>
         <page name='Codility_Q2'/>
+        <page name='Codility_Q3'/>
+        <page name='Codility_Q4'/>
     </pages>
 </playground>

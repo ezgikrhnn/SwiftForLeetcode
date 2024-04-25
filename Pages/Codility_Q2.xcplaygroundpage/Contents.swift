@@ -10,37 +10,41 @@
 
  that, given a positive integer N, returns the length of its longest binary gap. The function should return 0 if N doesn't contain a binary gap.
 
- For example, given N = 1041 the function should return 5, because N has binary representation 10000010001 and so its longest binary gap is of length 5. */
+ For example, given N = 1041 the function should return 5, because N has binary representation 10000010001 and so its longest binary gap is of length 5.
+ 
+ binaryGap birler arasında yer alan 0' dan oluşan en uzun 0 dizisidir.*/
+
+
+//MARK: BINARY GAP QUESTION
 
 import Foundation
 
-public func solution(_ N : Int) -> Int {
 
+public func solution(_ N : Int) -> Int {
+    // Sayıyı ikili biçimde string olarak al ve bir diziye dönüştür
     let binaryArray = Array(String(N, radix: 2))
-    print(binaryArray)
+   
     
-    var maxCount = 0
-    var currentCount = 0
+    var maxCount = 0  // En uzun sıfır dizisinin uzunluğunu tutacak
+    var currentCount = 0  // Geçerli sıfır dizisinin uzunluğunu sayar
+    var counting = false  // İlk '1' gördükten sonra saymaya başla
     
-    //bu dizideki en uzun tekrarlayan 0'i bulmak isteniyor.
-    for i in binaryArray{
-        if i == "0"{
-            currentCount += 1
-        }else {
-            if currentCount > maxCount {
-                maxCount = currentCount
+    // Diziyi dolaş
+    for char in binaryArray {
+        if char == "1" {
+            if counting {  // Eğer '1' geldi ve sayıyorsak max'ı güncelle
+                maxCount = max(maxCount, currentCount)  //ikisi arasından max'ı al
+                currentCount = 0  // Sıfır sayıcısını sıfırla
+            } else {
+                counting = true  // İlk '1' ile karşılaştık, saymaya başla
             }
-            currentCount = 0
+        }
+        else if counting {
+            currentCount += 1  // '0' geldi ve sayıyorsak, sayıcıyı artır
         }
     }
     
-    
-    // Son kontrol eğer dizi sıfırlarla bitiyorsa
-        if currentCount > maxCount {
-            maxCount = currentCount
-        }
-
-        return maxCount
+    return maxCount  // En uzun sıfır dizisini döndür
 }
 
 var number = 1041
