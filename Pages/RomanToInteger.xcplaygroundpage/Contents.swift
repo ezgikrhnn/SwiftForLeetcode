@@ -42,8 +42,6 @@ func romanToInt(_ s: String) -> Int {
             sum += currentVal
         }
     }
-    
     return sum
-    
 }
 print(romanToInt("LVIII"))
