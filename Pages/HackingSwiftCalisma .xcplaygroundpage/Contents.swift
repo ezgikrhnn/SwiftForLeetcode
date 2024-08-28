@@ -132,9 +132,109 @@ func sendNewsLetter(getRecipients: () -> [String]) {
     }
 }
 
+
 // MARK: RETURNING CLOSURES
 
+func travel() -> (String) -> Void {
+    return {
+        print("I am going to \($0)")
+    }
+}
+
+let result = travel()
+result("london")
 
 
 
+func createValidator() -> (String) -> Bool {
+    return {
+        if $0 == "twostraws" {
+            return true
+        } else {
+            return false
+        }
+    }
+}
 
+let validator = createValidator()
+print(validator)
+
+
+func createDoubler() -> (Int) -> Int {
+    return {
+        return $0 * 2 //closureın returnu
+    }
+}
+
+let doubler = createDoubler()
+print(doubler)
+
+
+func makeRecover(media: String) -> () -> String {
+    
+    switch media {
+     case "podcast" :
+        return {
+            return  "I am recording a podcast"
+        }
+    default:
+        return {
+            return  "I am recoring a video"
+        }
+    }
+}
+
+let recorder = makeRecover(media: "podcast")
+print(recorder())
+
+
+func paintingMaker(medium: String) -> (String) -> Void {
+    if medium == "watercolor" {
+        return { param in // _ da olsa parametre alıyor
+            print("I am \(param) and I'm going to paint some flowers") //clsouredn geldi, sonucu
+        }
+    } else {
+        return { param in
+            print("I'm \(param) and I'm going to paint a landscape.") //closuredan geldi. closure sonucu
+        }
+    }
+}
+let str = "ezgi"
+let maker = paintingMaker(medium: "watercolor")
+maker(str)
+
+
+
+func mealProducer() -> (Int) -> String {
+    return {
+        return "I will make dinner for \($0) people."
+    }
+}
+let makeDinner = mealProducer()
+print(makeDinner(5))
+
+
+
+func createAgeCheck(strict: Bool) -> (Int) -> Bool {
+    if strict {
+        return {
+            if $0 <= 21 {
+                return true
+            } else {
+                return false
+            }
+        }
+    } else {
+        return {
+            if $0 <= 18 {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+}
+
+let ageCheck = createAgeCheck(strict: true)
+let resutlt = ageCheck(20)
+print(result)
