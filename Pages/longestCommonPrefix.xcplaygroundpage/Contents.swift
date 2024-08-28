@@ -1,5 +1,10 @@
 //: [Previous](@previous)
 
+import Foundation
+
+var greeting = "Hello, playground"
+
+//: [Next](@next)
 /*
  Write a function to find the longest common prefix string amongst an array of strings.
  
@@ -30,3 +35,5 @@ func longestCommonPrefix(_ strs: [String]) -> String {
 
 let array =  ["flower","flow","flight"]
 print(longestCommonPrefix(array))
+
+

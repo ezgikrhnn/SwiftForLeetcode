@@ -21,6 +21,8 @@
 
  Input: s = "(]"
  Output: false
+ 
+ The algorithm used for this problem uses a STACK data structure to check whether the parentheses match correctly.
  */
 import Foundation
 
@@ -47,6 +49,7 @@ func isValid(_ s: String) -> Bool {
             characterArray.append(char)
             
         }else if let expectedOpen = matchingParenthesesDisct[char]{
+            print(matchingParenthesesDisct[char])
             //eger char kapanma karakteri ise, stackin son elemanı kontrol edilir.
             if characterArray.last == expectedOpen{
                 characterArray.removeLast() //eşleşirse arrayden çıkar
@@ -56,9 +59,9 @@ func isValid(_ s: String) -> Bool {
         }
     }
     
-    //array boşsa zaten eşleşme vardır.
+    //array boşsa tüm karakterler doğru şekilde eşleşmiştir.
     return characterArray.isEmpty
 }
 
-let ss = "(]{]"
+let ss = "()"
 print(isValid(ss))
