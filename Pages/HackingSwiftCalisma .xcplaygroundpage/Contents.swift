@@ -238,3 +238,82 @@ func createAgeCheck(strict: Bool) -> (Int) -> Bool {
 let ageCheck = createAgeCheck(strict: true)
 let resutlt = ageCheck(20)
 print(result)
+
+
+// MARK: CAPTURING VALUES
+
+func handOutBusinessCards() -> () -> Void {
+    var number = 0
+    return {
+        number += 1
+        print("Number handed out: \(number)")
+    }
+}
+
+let handOut = handOutBusinessCards()
+handOut()
+handOut()
+
+
+func createAgeValidator(strict: Bool) -> (Int) -> Bool {
+    return {
+        if strict {
+            if $0 >= 21 {
+                return true
+            }
+        } else {
+            if $0 >= 18 {
+                return true
+            }
+        } 
+        return false
+    }
+}
+
+let validator1 = createAgeValidator(strict: true)
+validator1(21)
+
+
+
+func makeAdder() -> (Int) -> Void {
+    var sum = 0
+    return {
+        sum += $0
+        print("Sum is now \(sum)")
+    }
+}
+let adder = makeAdder()
+adder(5)
+adder(3)
+
+
+func visitPlaces() -> (String) -> Void {
+    var places = [String: Int] ()
+    return {
+        places[$0, default : 0] += 1
+        let timesVisited = places[$0, default: 0]
+        print("Number of times I have visited \($0): \(timesVisited)")
+    }
+}
+
+let visit = visitPlaces()
+visit("London")
+visit("Newyork")
+visit("London")
+
+
+func summonGenie(wishCount: Int) -> (String) -> Void {
+    var currentWishes = wishCount
+    return {
+        if currentWishes > 0 {
+            currentWishes -= 1
+            print("You wished for \($0).")
+            print("Wishes left: \(currentWishes)")
+        } else {
+            print("you are out of the wishes")
+        }
+    }
+}
+
+let genie = summonGenie(wishCount: 3)
+genie("Being an ios developer")
