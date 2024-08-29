@@ -317,3 +317,4 @@ func summonGenie(wishCount: Int) -> (String) -> Void {
 
 let genie = summonGenie(wishCount: 3)
 genie("Being an ios developer")
+

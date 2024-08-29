@@ -2,6 +2,7 @@
 <playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
     <pages>
         <page name='lengthOfLongestSubstring'/>
+        <page name='hackerrank2'/>
         <page name='isPalindrome'/>
         <page name='twoSum'/>
         <page name='mySqrt'/>
@@ -14,9 +15,9 @@
         <page name='isValid'/>
         <page name='edabitQuestion1'/>
         <page name='hackerrank1'/>
-        <page name='HackingSwiftCalisma '/>
-        <page name='hackerrank2'/>
         <page name='firstLast'/>
         <page name='longestCommonPrefix'/>
+        <page name='hackingSwift_Structs'/>
+        <page name='hackingSwift_Closures'/>
     </pages>
 </playground>
