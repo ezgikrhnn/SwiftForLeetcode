@@ -1,5 +1,10 @@
 //: [Previous](@previous)
+// MARK: STRUCTS
 
+/**
+ Swift her struct için bir varsayılan initializer sağlar. Eğer tüm değişkenlere dışarıdan değer atılabiliyorsa yani (publicse) init kullanmaya gerek yoktur.
+ Fakat struct değişkenlerine özel bir işlem uygulamak istediğinde init kullanmalısın. Orneğin değişkeni 2 ile çarpmak gibi.
+ */
 //MARK: COMPUTED PROPERTIES:
 // computed propertiler return etmek zorunda. orneğin if else içinde print değil return olacak.
 
@@ -216,3 +221,168 @@ struct FrameWork {
 let vapor = FrameWork(name: "Vapor", language: "Swift")
 
 
+// MARK: LAZY PROPERTIES
+// lazy properties bir classta ya da structa kullanılan ancak ilk kez erişildiğinde hesaplanan ve başlatılan yapılardır. Asıl amacı maliyeti, bellek ve kaynak kullanımını azaltmaktır. Lazy properti'ler yalnızca VAR olarak tanımlanabilir.
+
+struct FamilyTree {
+    init() {
+        print("Creating family tree!")
+    }
+}
+
+struct Person {
+    var name: String
+    lazy var familyTree = FamilyTree()
+    init(name: String) {
+        self.name = name
+    }
+}
+var ed = Person(name: "Ed")
+ed.familyTree //bu şekilde kullanım yapılabilir.
+
+
+// MARK: STATIC PROPERTIES
+
+//static bir değişkeni değiştirmek veya ona erişmek istersek sınıf üzerinden erişim yapmak gerekiyor.
+// static let ya da var alabilir.
+struct Student {
+    static var classSize = 0
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+        Student.classSize += 1
+    }
+}
+let ed1 = Student(name: "Ed")
+let taylor = Student(name: "Taylor")
+print(Student.classSize)
+
+
+struct Person1 {
+    static var population = 0
+    var name: String
+    
+    init(personName: String) {
+        name = personName
+        Person1.population += 1
+    }
+}
+
+let person1 = Person1(personName: "James")
+let person2 = Person1(personName: "Ezgi")
+print(Person1.population)
+
+struct Raffle {
+    static var ticketsUsed = 0
+    var name: String
+    var tickets: Int
+    init(name: String, tickets: Int) {
+        self.name = name
+        self.tickets = tickets
+        Raffle.ticketsUsed += tickets //gordugun gibi statice sınfı içinden erişim yapıyorum.
+    }
+}
+
+struct NewsStory {
+    static var BreakingNewsCount = 0
+    static var regularNewsCount = 0
+    var headline: String
+    init(headline: String, isBreaking: Bool) {
+        self.headline = headline
+        if isBreaking {
+            NewsStory.BreakingNewsCount += 1
+        }
+        else {
+            NewsStory.regularNewsCount += 1
+        }
+    }
+}
+
+struct LegoBrick {
+    static var numberMade = 0
+    var shape: String
+    var color: String
+    init(shape: String, color: String) {
+        self.shape = shape
+        self.color = color
+        LegoBrick.numberMade += 1
+    }
+}
+
+// MARK: ACCESS CONTROL
+
+struct Person2 {
+    var id: String
+    init(id: String) {
+        self.id = id
+    }
+    func identify() -> String {
+        return "my social security id is \(id)"
+    }
+}
+
+let person3 = Person2(id: "12345")
+
+
+struct School {
+    var staffNames: [String]
+    private var studentNames: [String]
+    init(staff: String...) {
+        self.staffNames = staff
+        self.studentNames = [String]()
+    }
+}
+let royalHigh = School(staff: "Mr Hughes")
+
+
+struct Toy {
+    var customerPrice: Double
+    private var actualPrice: Int
+    init(price: Int) {
+        actualPrice = price
+        customerPrice = Double(actualPrice * 2)
+    }
+}
+
+let buzz = Toy(price: 10)
+
+
+struct School2 {
+    var staffNames: [String]
+    private var studentNames : [String]
+    init(staff: String...) { // ... kullanmak değişken parametre demektir.
+        self.staffNames = staff
+        self.studentNames = [String]()
+    }
+}
+let royal = School(staff: "Mrs Hughes")
+let royal1 = School(staff: "Mrs Hughes", "Mr Smith", "Ms Johnson") // ... oldugu için çoklu parametre verilebilir.
+
+
+struct Person3 {
+    private var socialSecurityNumber: String
+    init(ssn: String) {
+        socialSecurityNumber = ssn
+    }
+}
+let sarah = Person3(ssn: "555-55-5555")
+
+//swiftte struct yapısında bir init oluşturmaya gerek yoktur cunku structta swif totomatik olarak initializer başlatır zaten.
+struct FacebookUser {
+    public var privatePosts: String
+    public var publicPosts: String
+}
+let user3 = FacebookUser(privatePosts: "weheheh", publicPosts: "lalal")
+
+
+struct Office {
+    private var passCode: String
+    var address: String
+    var employees: [String]
+    init(address: String, employees: [String]) {
+        self.address = address
+        self.employees = employees
+        self.passCode = "secret"
+    }
+}
