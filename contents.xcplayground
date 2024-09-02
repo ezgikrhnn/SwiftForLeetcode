@@ -7,6 +7,7 @@
         <page name='twoSum'/>
         <page name='mySqrt'/>
         <page name='removeElement'/>
+        <page name='hackingSwift_Structs'/>
         <page name='Codility_Q1'/>
         <page name='Codility_Q2'/>
         <page name='Codility_Q3'/>
@@ -17,7 +18,6 @@
         <page name='hackerrank1'/>
         <page name='firstLast'/>
         <page name='longestCommonPrefix'/>
-        <page name='hackingSwift_Structs'/>
         <page name='hackingSwift_Closures'/>
     </pages>
 </playground>
